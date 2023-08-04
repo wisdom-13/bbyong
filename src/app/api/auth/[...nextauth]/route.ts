@@ -1,3 +1,4 @@
+import { addUser } from "@/service/user";
 import NextAuth, { NextAuthOptions } from "next-auth"
 import KakaoProvider from 'next-auth/providers/kakao'
 
@@ -9,40 +10,38 @@ export const authOptions: NextAuthOptions = {
     }),
   ],
 
-  // callbacks: {
-  //   async signIn({ user: { id, name, image, email } }) {
-  //     if (!email) {
-  //       return false;
-  //     }
-  //     addUser({
-  //       id,
-  //       name: name || '',
-  //       image,
-  //       email,
-  //       username: email.split('@')[0]
-  //     });
-  //     return true;
-  //   },
+  callbacks: {
+    async signIn({ user: { id, name, image, email } }) {
+      if (!email) {
+        return false;
+      }
+      addUser({
+        id,
+        name: name || '',
+        image,
+        email,
+      });
+      return true;
+    },
 
-  //   async session({ session, token }) {
-  //     const user = session?.user;
-  //     if (user) {
-  //       session.user = {
-  //         ...user,
-  //         username: user.email?.split('@')[0] || '',
-  //         id: token.id as string
-  //       }
-  //     }
-  //     return session
-  //   },
+    async session({ session, token }) {
+      const user = session?.user;
+      if (user) {
+        session.user = {
+          ...user,
+          id: token.id as string
+        }
+      }
+      return session
+    },
 
-  //   async jwt({ token, user }) {
-  //     if (user) {
-  //       token.id = user.id;
-  //     }
-  //     return token;
-  //   }
-  // },
+    async jwt({ token, user }) {
+      if (user) {
+        token.id = user.id;
+      }
+      return token;
+    }
+  },
   // pages: {
   //   signIn: '/auth/signin',
   // }
