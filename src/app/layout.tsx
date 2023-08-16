@@ -19,7 +19,9 @@ export default function RootLayout({
     <html lang="en">
       <body className={inter.className}>
         <AuthContext>
-          {children}
+          <div className='w-[390px] m-auto h-screen border border-gray-100'>
+            {children}
+          </div>
         </AuthContext>
       </body>
     </html>
