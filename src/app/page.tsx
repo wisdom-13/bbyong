@@ -1,20 +1,25 @@
 'use client'
 
-import { signIn, signOut, useSession } from "next-auth/react"
+import Button from '@/components/ui/Button';
+import { signIn, signOut, useSession } from "next-auth/react";
+import Image from 'next/image';
+
 
 export default function Home() {
   const { data: session } = useSession();
+
   return (
     <>
-      <div>Main</div>
       {
         session ? (
           <div>
-            <p>{session.user?.name} 님 안녕</p>
-            <button onClick={() => signOut()}>로그아웃</button>
+            <p>{session.user?.name}의 두더지</p>
+            <Image src='/mole.png' width={300} height={300} alt='mole' />
+            <Button text='마이페이지' />
+            <Button text='로그아웃' onClick={() => signOut()} />
           </div>
         ) : (
-          <button onClick={() => signIn()}>카카오 로그인</button>
+          <Button text='시작하기' onClick={() => signIn()} />
         )
       }
     </>
