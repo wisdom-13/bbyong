@@ -14,6 +14,11 @@ export default {
       type: 'string'
     },
     {
+      title: 'Link',
+      name: 'link',
+      type: 'string'
+    },
+    {
       title: 'Image', // 두더지 이미지
       name: 'image',
       type: 'string'
