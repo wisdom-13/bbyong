@@ -18,3 +18,16 @@ export async function addUser({ id, email, name, image }: OAuthUser) {
     dudge: 0
   })
 }
+
+export async function getLink(link?: string) {
+  const query = link
+    ? `&& (link == "${link}")`
+    : '';
+  return client
+    .fetch(
+      `*[_type =="user" ${query}][0]{
+      link,
+    }
+    `
+    )
+}
