@@ -3,7 +3,7 @@ type Props = {
   color?: 'gray' | 'red' | 'blue';
   className?: string;
   onClick?: () => void;
-  disabled: boolean;
+  disabled?: boolean;
 }
 
 export default function Button({ text, color = 'gray', className, onClick, disabled }: Props) {

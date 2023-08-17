@@ -5,8 +5,10 @@ import Button from './ui/Button';
 import useDebounce from '@/hooks/debounce';
 import useSWR from 'swr';
 import { MoonLoader } from 'react-spinners';
+import { useRouter } from 'next/navigation';
 
 export default function SettingLink() {
+  const router = useRouter();
   const [link, setLink] = useState('');
   const debouncedKeyword = useDebounce(link);
 
@@ -31,7 +33,14 @@ export default function SettingLink() {
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
-    alert('링크생성');
+
+    fetch('/api/link', {
+      method: 'PUT',
+      body: JSON.stringify({ link }),
+    }).then(() => {
+      router.push(`/${link}`)
+    });
+
   };
 
   return (

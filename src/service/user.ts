@@ -31,3 +31,10 @@ export async function getLink(link?: string) {
     `
     )
 }
+
+export async function settingLink(userId: string, link: string) {
+  return client
+    .patch(userId)
+    .set({ link })
+    .commit({ autoGenerateArrayKeys: true });
+}
