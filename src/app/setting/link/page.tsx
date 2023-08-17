@@ -1,7 +1,7 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import SettingLink from '@/components/SettingLink';
 import Title from '@/components/ui/Title';
-import { getUserByUseremail } from '@/service/user';
+import { getUserByUserEmail } from '@/service/user';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
 
@@ -12,7 +12,7 @@ export default async function page() {
     redirect('/api/auth/signin');
   }
 
-  const user = await getUserByUseremail(session.user.email);
+  const user = await getUserByUserEmail(session.user.email);
 
   if (user?.link) {
     redirect('/');
