@@ -2,6 +2,7 @@ import AuthContext from '@/context/AuthContext'
 import './globals.css'
 import type { Metadata } from 'next'
 import { Inter } from 'next/font/google'
+import SWRConfigContext from '@/context/SWRConfigContext'
 
 const inter = Inter({ subsets: ['latin'] })
 
@@ -20,7 +21,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <AuthContext>
           <div className='w-[390px] m-auto h-screen border border-gray-100'>
-            {children}
+            <SWRConfigContext>{children}</SWRConfigContext>
           </div>
         </AuthContext>
       </body>
