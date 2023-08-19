@@ -4,5 +4,5 @@ export type User = {
   email: string;
   image?: string;
   link?: string;
-  dudge?: string;
+  dudge: number;
 }

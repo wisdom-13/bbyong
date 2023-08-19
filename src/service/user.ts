@@ -28,6 +28,15 @@ export async function getUserByUserEmail(email: string) {
   );
 }
 
+export async function getUserByUserLink(link: string) {
+  return client.fetch(
+    `*[_type == "user" && link == "${link}"][0]{
+      ...,
+      "id":_id,
+    }`
+  );
+}
+
 export async function getLink(link?: string) {
   const query = link
     ? `&& (link == "${link}")`
