@@ -15,7 +15,7 @@ export default async function page() {
   const user = await getUserByUserEmail(session.user.email);
 
   if (user?.link) {
-    redirect('/');
+    redirect(`/${user.link}`);
   }
 
   return (

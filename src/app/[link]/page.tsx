@@ -1,4 +1,5 @@
 import Dudge from "@/components/Dudge";
+import UserProfile from '@/components/UserProfile';
 import Title from '@/components/ui/Title';
 import { getUserByUserLink } from '@/service/user';
 import { notFound } from 'next/navigation';
@@ -18,8 +19,7 @@ export default async function page({ params: { link } }: Props) {
 
   return (
     <>
-      <Title text={`${user.name}의 페이지`} />
-      <Dudge user={user} />
+      <UserProfile link={link} />
     </>
   );
 }
