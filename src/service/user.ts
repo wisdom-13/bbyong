@@ -56,3 +56,10 @@ export async function settingLink(userId: string, link: string) {
     .set({ link })
     .commit({ autoGenerateArrayKeys: true });
 }
+
+export async function addDudge(userId: string) {
+  return client
+    .patch(userId)
+    .inc({ dudge: 1 })
+    .commit({ autoGenerateArrayKeys: true });
+}

@@ -1,22 +1,25 @@
 'use client'
 
-import { User } from '@/model/user';
 import { useState } from "react";
 import Button from './ui/Button';
 
+
 type Props = {
-  user: User;
+  userId: string;
+  dudge: number;
 }
 
-type Dudge = {
-  count: number;
-}
+export default function Dudge({ userId, dudge = 0 }: Props) {
 
-export default function Dudge({ user }: Props) {
-  const [count, setCount] = useState(user.dudge);
+  const [count, setCount] = useState(dudge);
 
   const handleClick = () => {
-    setCount(count + 1)
+    setCount(count + 1);
+
+    fetch('/api/dudge', {
+      method: 'PUT',
+      body: JSON.stringify({ id: userId }),
+    })
   }
 
   return (
