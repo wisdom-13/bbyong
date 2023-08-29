@@ -7,38 +7,38 @@ import useSWR from 'swr';
 import { MoonLoader } from 'react-spinners';
 import { useRouter } from 'next/navigation';
 
-export default function SettingLink() {
+export default function SettingAddress() {
   const router = useRouter();
-  const [link, setLink] = useState('');
-  const debouncedKeyword = useDebounce(link);
+  const [address, setAddress] = useState('');
+  const debouncedKeyword = useDebounce(address);
 
-  const lenChk = link.length >= 3 && link.length <= 30;
-  const regexChk = /^[a-zA-Z0-9._]+$/.test(link)
-  const apiLink = lenChk && regexChk ? debouncedKeyword : '';
+  const lenChk = address.length >= 3 && address.length <= 30;
+  const regexChk = /^[a-zA-Z0-9._]+$/.test(address)
+  const apiAddress = lenChk && regexChk ? debouncedKeyword : '';
 
-  const { data: links, isLoading } = useSWR(`/api/link/${apiLink}`);
+  const { data: allAddress, isLoading } = useSWR(`/api/address/${apiAddress}`);
 
   let errorMsg = '';
 
-  if (!link) {
+  if (!address) {
   } else if (!regexChk) {
-    errorMsg = '링크에는 영문, 숫자, 밑줄(_) 및 마침표(.)만 포함할 수 있습니다.';
+    errorMsg = '주소에는 영문, 숫자, 밑줄(_) 및 마침표(.)만 포함할 수 있습니다.';
   } else if (!lenChk) {
-    errorMsg = link.length < 3 ? '링크는 3자 이상이어야 합니다.' : '링크는 30자 이하여야 합니다.';
-  } else if (links?.link) {
-    errorMsg = '이미 사용중인 링크입니다.';
+    errorMsg = address.length < 3 ? '주소는 3자 이상이어야 합니다.' : '주소는 30자 이하여야 합니다.';
+  } else if (allAddress?.address) {
+    errorMsg = '이미 사용중인 주소입니다.';
   }
 
-  const successChk = link != '' && errorMsg == '' && !isLoading;
+  const successChk = address != '' && errorMsg == '' && !isLoading;
 
   const onSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    fetch('/api/link', {
+    fetch('/api/address', {
       method: 'PUT',
-      body: JSON.stringify({ link }),
+      body: JSON.stringify({ address }),
     }).then(() => {
-      router.push(`/${link}`)
+      router.push(`/${address}`)
     });
 
   };
@@ -50,10 +50,10 @@ export default function SettingLink() {
         <p className='text-gray-500'>bbyong.com/</p>
         <input
           className='w-full outline-none'
-          value={link}
-          onChange={(e) => setLink(e.target.value)}
+          value={address}
+          onChange={(e) => setAddress(e.target.value)}
           type='text'
-          placeholder='your link' />
+          placeholder='your address' />
         {isLoading &&
           <span className='absolute z-20 inset-0 pr-3 flex justify-end items-center'>
             <MoonLoader color='gray' size={15} speedMultiplier={0.5} />

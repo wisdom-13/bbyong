@@ -5,7 +5,6 @@ import Title from '@/components/ui/Title';
 import { signIn, signOut, useSession } from "next-auth/react";
 import Image from 'next/image';
 import Link from 'next/link';
-import useSWR from 'swr';
 
 
 export default function Home() {
@@ -21,7 +20,7 @@ export default function Home() {
           user ? (
             <>
               <Image src='/mole.png' width={300} height={300} alt='mole' />
-              <Link href={user.link ? `/${user.link}` : '/setting/link'}>내 두더지집</Link>
+              <Link href={user.address ? `/${user.address}` : '/setting/address'}>내 두더지집</Link>
               <Button text='로그아웃' onClick={() => signOut()} />
             </>
           ) : (

@@ -14,7 +14,7 @@ export async function addUser({ id, email, name, image }: OAuthUser) {
     email,
     name,
     image,
-    link: '',
+    address: '',
     dudge: 0
   })
 }
@@ -28,32 +28,32 @@ export async function getUserByUserEmail(email: string) {
   );
 }
 
-export async function getUserByUserLink(link: string) {
+export async function getUserByUserAddress(address: string) {
   return client.fetch(
-    `*[_type == "user" && link == "${link}"][0]{
+    `*[_type == "user" && address == "${address}"][0]{
       ...,
       "id":_id,
     }`
   );
 }
 
-export async function getLink(link?: string) {
-  const query = link
-    ? `&& (link == "${link}")`
+export async function getAddress(address?: string) {
+  const query = address
+    ? `&& (address == "${address}")`
     : '';
   return client
     .fetch(
       `*[_type =="user" ${query}][0]{
-      link,
+      address,
     }
     `
     )
 }
 
-export async function settingLink(userId: string, link: string) {
+export async function settingAddress(userId: string, address: string) {
   return client
     .patch(userId)
-    .set({ link })
+    .set({ address })
     .commit({ autoGenerateArrayKeys: true });
 }
 

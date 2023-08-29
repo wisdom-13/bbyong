@@ -2,7 +2,7 @@ import { ReactElement } from 'react';
 
 type Props = {
   text: string;
-  icon?: ReactElement;
+  icon?: ReactElement | '';
 }
 
 export default function Title({ text, icon }: Props) {
