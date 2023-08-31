@@ -57,6 +57,7 @@ export default {
               title: 'Click',
               name: 'click',
               type: 'number',
+              initialValue: 0,
             },
             {
               title: 'IsUse',
