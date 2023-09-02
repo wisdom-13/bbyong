@@ -33,6 +33,7 @@ export async function getUserByUserAddress(address: string) {
     `*[_type == "user" && address == "${address}"][0]{
       ...,
       "links": *[_type == "link" && references(^._id) && isUse == true]{
+        "id": _id,
         title, 
         url,
       }
