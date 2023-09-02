@@ -1,6 +1,6 @@
 'use client';
 
-import { User, UserDetail } from '@/model/user';
+import { UserDetail } from '@/model/user';
 import Dudge from './Dudge';
 import Title from './ui/Title';
 import useSWR from 'swr';
@@ -20,8 +20,6 @@ export default function UserProfile({ address }: Props) {
 
   if (!user) return;
 
-  console.log(user.link)
-
   return (
     <div>
       <Title text={`${user.name}의 페이지`} icon={me?.email == user.email ? <MoreIcon /> : ''} />
@@ -29,7 +27,7 @@ export default function UserProfile({ address }: Props) {
         {user.bio && <p>자기소개 : {user.bio}</p>}
       </div>
       <Dudge userId={user.id} dudge={user.dudge} />
-      <LinkList links={user.link} />
+      <LinkList links={user.links} />
     </div>
   );
 }

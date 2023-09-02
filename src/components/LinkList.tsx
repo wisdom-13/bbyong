@@ -1,16 +1,18 @@
-import { Link } from '@/model/user';
+import Button from './ui/Button';
+import { SimpleLink } from '@/model/link';
 
 type Props = {
-  links: Link[];
+  links: SimpleLink[];
 }
 export default function LinkList({ links }: Props) {
+  const handleLink = (url: string) => {
+    window.open(url);
+  }
 
   return (
     <div className='flex flex-col p-6'>
       {links.map((link, index) => (
-        link.isUse && (
-          <a key={index} className='bg-gray-100 text-center p-2 mb-2' href={link.url} target='_blank'>{link.title}</a>
-        )
+        <Button key={index} className='mb-2' onClick={() => handleLink(link.url)} text={link.title} />
       ))}
     </div>
   );

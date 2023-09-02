@@ -1,3 +1,5 @@
+import { SimpleLink } from './link';
+
 export type User = {
   id: string;
   name: string;
@@ -9,12 +11,5 @@ export type User = {
 }
 
 export type UserDetail = User & {
-  link: Link[];
-}
-
-export type Link = {
-  title: string;
-  url: string;
-  click: number;
-  isUse: boolean;
+  links: SimpleLink[];
 }

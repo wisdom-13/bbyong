@@ -33,41 +33,6 @@ export default {
       name: 'bio',
       type: 'string',
     },
-    {
-      title: 'Links',
-      name: 'link',
-      type: 'array',
-      of: [
-        {
-          title: 'Link',
-          name: 'link',
-          type: 'document',
-          fields: [
-            {
-              title: 'Title',
-              name: 'title',
-              type: 'string',
-            },
-            {
-              title: 'Url',
-              name: 'url',
-              type: 'string',
-            },
-            {
-              title: 'Click',
-              name: 'click',
-              type: 'number',
-              initialValue: 0,
-            },
-            {
-              title: 'IsUse',
-              name: 'isUse',
-              type: 'boolean',
-            }
-          ]
-        }
-      ]
-    }
   ],
   preview: {
     select: {
