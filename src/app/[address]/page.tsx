@@ -1,6 +1,8 @@
 import UserProfile from '@/components/UserProfile';
 import { getUserByUserAddress } from '@/service/user';
+import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
+
 
 type Props = {
   params: {
@@ -22,3 +24,13 @@ export default async function page({ params: { address } }: Props) {
   );
 }
 
+
+export async function generateMetadata({
+  params: { address },
+}: Props): Promise<Metadata> {
+  const user = await getUserByUserAddress(address);
+  return {
+    title: `${user.name}의 두더지집`,
+    description: `${user?.name}의 두더지집입니다.`,
+  };
+}
