@@ -14,16 +14,16 @@ export default function SettingProfile() {
 
   return (
     <>
-      <form className='w-full flex flex-col'>
-        <label>
-          <b>이름</b><br />
-          <input type='text' value={user.name} placeholder='이름을 입력하세요.' />
+      <form className='w-full flex flex-col text-sm'>
+        <label className='mb-3'>
+          <b className='pl-1'>이름</b><br />
+          <input className='bg-gray-50 rounded-md p-3 outline-none w-full' type='text' value={user.name} placeholder='이름을 입력하세요.' />
         </label>
-        <label>
-          <b>자기소개</b><br />
-          <textarea value={user.bio} placeholder='자기소개를 입력하세요.'></textarea>
+        <label className='mb-3'>
+          <b className='pl-1'>자기소개</b><br />
+          <textarea className='bg-gray-50 rounded-md p-3 outline-none w-full resize-none' value={user.bio} rows={5} placeholder='자기소개를 입력하세요.'></textarea>
         </label>
-        <Button text='저장하기' />
+        <Button text='저장하기' color='blue' />
       </form>
     </>
   );
