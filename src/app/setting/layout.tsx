@@ -15,7 +15,7 @@ export default function layout({
   return (
     <div>
       <Title text='설정' />
-      <div className='p-6'>
+      <div className='px-6'>
         <ul className='flex justify-around'>
           {tabs.map((tab, index) => (
             <Link key={index} href={tab.href}>{tab.title}</Link>

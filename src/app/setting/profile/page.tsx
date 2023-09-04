@@ -1,9 +1,10 @@
-import React from 'react';
+import SettingProfile from '@/components/SettingProfile';
 
-export default function page() {
+export default async function page() {
+
   return (
-    <div>
-      profile
+    <div className='p-6'>
+      <SettingProfile />
     </div>
   );
 }
