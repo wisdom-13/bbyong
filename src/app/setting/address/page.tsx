@@ -19,11 +19,8 @@ export default async function page() {
   }
 
   return (
-    <div>
-      <Title text='Setting Address' />
-      <div className='p-6'>
-        <SettingAddress />
-      </div>
+    <div className='p-6'>
+      <SettingAddress />
     </div>
   );
 }

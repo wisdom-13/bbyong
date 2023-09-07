@@ -16,7 +16,7 @@ export default function SettingAddress() {
   const regexChk = /^[a-zA-Z0-9._]+$/.test(address)
   const apiAddress = lenChk && regexChk ? debouncedKeyword : '';
 
-  const { data: allAddress, isLoading } = useSWR(`/api/address/${apiAddress}`);
+  const { data: allAddress, isLoading } = useSWR(`/api/setting/address/${apiAddress}`);
 
   let errorMsg = '';
 
@@ -31,10 +31,10 @@ export default function SettingAddress() {
 
   const successChk = address != '' && errorMsg == '' && !isLoading;
 
-  const onSubmit = (e: FormEvent) => {
+  const handleSubmit = (e: FormEvent) => {
     e.preventDefault();
 
-    fetch('/api/address', {
+    fetch('/api/setting/address', {
       method: 'PUT',
       body: JSON.stringify({ address }),
     }).then(() => {
@@ -44,7 +44,7 @@ export default function SettingAddress() {
   };
 
   return (
-    <form className='flex flex-col gap-3' onSubmit={onSubmit}>
+    <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
       <p className='text-sm'>입력한 문자로 링크를 생성합니다.</p>
       <label className={`flex relative border rounded-md p-3 ${successChk ? 'border-blue-500' : 'border-gray-100'}`}>
         <p className='text-gray-500'>bbyong.com/</p>

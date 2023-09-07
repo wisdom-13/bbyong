@@ -73,3 +73,10 @@ export async function addDudge(userId: string) {
     .inc({ dudge: 1 })
     .commit({ autoGenerateArrayKeys: true });
 }
+
+export async function updateProfile(userId: string, name: string, bio: string) {
+  return client
+    .patch(userId)
+    .set({ name: name, bio: bio })
+    .commit({ autoGenerateArrayKeys: true });
+}
