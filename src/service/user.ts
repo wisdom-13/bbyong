@@ -74,7 +74,7 @@ export async function addDudge(userId: string) {
     .commit({ autoGenerateArrayKeys: true });
 }
 
-export async function updateProfile(userId: string, name: string, bio: string) {
+export async function settingProfile(userId: string, name: string, bio: string) {
   return client
     .patch(userId)
     .set({ name: name, bio: bio })
