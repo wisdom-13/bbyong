@@ -4,7 +4,7 @@ import { UserDetail } from '@/model/user';
 import useSWR from 'swr';
 import Button from './ui/Button';
 import { useForm } from "react-hook-form";
-import { FormEvent, useEffect } from 'react';
+import { useEffect, useState } from 'react';
 
 interface HookFormTypes {
   name: string;
@@ -14,6 +14,9 @@ interface HookFormTypes {
 export default function SettingProfile() {
   const { data: user } = useSWR<UserDetail>(`/api/me`);
   const { register, formState: { errors }, handleSubmit, reset } = useForm<HookFormTypes>();
+
+  const [isLoading, setIsLoading] = useState(false);
+
 
   useEffect(() => {
     if (user) {
@@ -28,18 +31,14 @@ export default function SettingProfile() {
     return false;
   }
 
-  // const onSubmit = (data: HookFormTypes) => (
-  //   console.log(data)
-
-  // )
-
   const onSubmit = (data: HookFormTypes) => {
+    setIsLoading(true);
 
     fetch('/api/setting/profile', {
       method: 'PUT',
       body: JSON.stringify({ name: data.name, bio: data.bio }),
     }).then(() => {
-      alert('변경되었습니다.')
+      setIsLoading(false);
     });
   }
 
@@ -52,6 +51,7 @@ export default function SettingProfile() {
             className='bg-gray-50 rounded-md p-3 outline-none w-full'
             type='text'
             placeholder='이름을 입력하세요.'
+            readOnly={isLoading}
             {
             ...register('name', {
               required: true,
@@ -75,6 +75,7 @@ export default function SettingProfile() {
             className='bg-gray-50 rounded-md p-3 outline-none w-full resize-none'
             rows={5}
             placeholder='자기소개를 입력하세요.'
+            readOnly={isLoading}
             {
             ...register('bio', {
               required: true,
@@ -87,7 +88,7 @@ export default function SettingProfile() {
           />
           <p className='text-sm text-red-500'>{errors.bio?.message}</p>
         </label>
-        <Button text='저장하기' color='blue' />
+        <Button text='저장하기' color='blue' isLoading={isLoading} />
       </form>
     </>
   );
