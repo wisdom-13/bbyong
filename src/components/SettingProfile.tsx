@@ -5,6 +5,8 @@ import useSWR from 'swr';
 import Button from './ui/Button';
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from 'react';
+import Input from './ui/Input';
+import ErrorMsg from './ui/ErrorMsg';
 
 interface HookFormTypes {
   name: string;
@@ -16,7 +18,6 @@ export default function SettingProfile() {
   const { register, formState: { errors }, handleSubmit, reset } = useForm<HookFormTypes>();
 
   const [isLoading, setIsLoading] = useState(false);
-
 
   useEffect(() => {
     if (user) {
@@ -42,51 +43,47 @@ export default function SettingProfile() {
     });
   }
 
+  const nameChk = register('name', {
+    required: true,
+    maxLength: {
+      value: 10,
+      message: "10자 이하의 이름을 입력해주세요."
+    },
+    minLength: {
+      value: 2,
+      message: "2자 이상의 이름을 입력해주세요."
+    }
+  })
+
+  const bioChk = register('bio', {
+    required: true,
+    maxLength: {
+      value: 80,
+      message: "80자 이하로 작성해주세요."
+    }
+  })
+
   return (
     <>
       <form className='w-full flex flex-col text-sm' onSubmit={handleSubmit(onSubmit)}>
         <label className='mb-3'>
           <b className='pl-1'>이름</b><br />
-          <input
-            className='bg-gray-50 rounded-md p-3 outline-none w-full'
-            type='text'
+          <Input type='text'
             placeholder='이름을 입력하세요.'
             readOnly={isLoading}
-            {
-            ...register('name', {
-              required: true,
-              maxLength: {
-                value: 10,
-                message: "10자 이하의 이름을 입력해주세요."
-              },
-              minLength: {
-                value: 2,
-                message: "2자 이상의 이름을 입력해주세요."
-              }
-            })
-            }
+            register={nameChk}
           />
-          <p className='text-xs text-red-500'>{errors.name?.message}</p>
-
+          <ErrorMsg msg={errors.name?.message} />
         </label>
         <label className='mb-3'>
           <b className='pl-1'>자기소개</b><br />
-          <textarea
-            className='bg-gray-50 rounded-md p-3 outline-none w-full resize-none'
-            rows={5}
+          <Input type='text'
+            textarea={true}
             placeholder='자기소개를 입력하세요.'
             readOnly={isLoading}
-            {
-            ...register('bio', {
-              required: true,
-              maxLength: {
-                value: 80,
-                message: "80자 이하로 작성해주세요."
-              }
-            })
-            }
+            register={bioChk}
           />
-          <p className='text-sm text-red-500'>{errors.bio?.message}</p>
+          <ErrorMsg msg={errors.bio?.message} />
         </label>
         <Button text='저장하기' color='blue' isLoading={isLoading} />
       </form>
