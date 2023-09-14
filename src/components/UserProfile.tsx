@@ -26,8 +26,11 @@ export default function UserProfile({ address }: Props) {
       <div className='px-6'>
         {user.bio && <p>자기소개 : {user.bio}</p>}
       </div>
-      <Dudge userId={user.id} dudge={user.dudge} />
-      <LinkList links={user.links} />
+      <div className='p-6'>
+        <Dudge userId={user.id} dudge={user.dudge} />
+        <br />
+        <LinkList links={user.links} />
+      </div>
     </div>
   );
 }

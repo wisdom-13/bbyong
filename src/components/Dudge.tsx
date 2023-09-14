@@ -23,7 +23,7 @@ export default function Dudge({ userId, dudge = 0 }: Props) {
   }
 
   return (
-    <div className='p-6'>
+    <div>
       <div>카운트:{count}</div>
       <Button text='뿅' className='mt-3' onClick={handleClick} />
     </div>

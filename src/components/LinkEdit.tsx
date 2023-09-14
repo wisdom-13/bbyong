@@ -8,7 +8,7 @@ type Props = {
 
 export default function LinkEdit({ link }: Props) {
   return (
-    <div>
+    <div className='w-full'>
       <div>
         <input type='text' value={link.title} />
       </div>

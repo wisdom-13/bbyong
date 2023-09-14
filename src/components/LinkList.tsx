@@ -9,7 +9,7 @@ type Props = {
 export default function LinkList({ links, edit = false }: Props) {
 
   return (
-    <div className='flex flex-col p-6'>
+    <div className='flex flex-col'>
       {
         edit
           ? links.map((link) => (
