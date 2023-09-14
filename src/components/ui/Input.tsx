@@ -1,32 +1,37 @@
 import { UseFormRegisterReturn } from 'react-hook-form';
 
 type Props = {
-  className?: string;
   textarea?: boolean;
+  style?: string;
+  className?: string;
   type?: string;
   rows?: number;
+  value?: string;
   placeholder?: string;
   readOnly?: boolean
   register?: UseFormRegisterReturn;
 }
 
-export default function Input({ textarea = false, className, type = 'text', rows = 5, placeholder, readOnly = false, register }: Props) {
+export default function Input({ textarea = false, style = 'bgInput', className, type = 'text', rows = 5, value, placeholder, readOnly = false, register }: Props) {
   return (
     <>
       {
         textarea
           ? <textarea
-            className={`bg-gray-50 rounded-md p-3 outline-none w-full ${className}`}
+            className={`${getInputStyle(style)} ${className}`}
             rows={rows}
             placeholder={placeholder}
             readOnly={readOnly}
             {...register}
-          />
+          >
+            {value}
+          </textarea>
           : <input
-            className={`bg-gray-50 rounded-md p-3 outline-none w-full ${className}`}
+            className={`${getInputStyle(style)} ${className}`}
             type={type}
             placeholder={placeholder}
             readOnly={readOnly}
+            value={value}
             {...register}
           />
       }
@@ -34,3 +39,18 @@ export default function Input({ textarea = false, className, type = 'text', rows
   );
 }
 
+function getInputStyle(style: string): string {
+  let inputStyle = '';
+
+  switch (style) {
+    case 'simpleInput':
+      inputStyle = 'outline-none w-full';
+      break;
+    case 'bgInput':
+      inputStyle = 'outline-none w-full bg-gray-50 rounded-md p-3';
+      break;
+
+  }
+
+  return inputStyle;
+}

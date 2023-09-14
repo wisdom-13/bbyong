@@ -72,6 +72,7 @@ export default function SettingProfile() {
             placeholder='이름을 입력하세요.'
             readOnly={isLoading}
             register={nameChk}
+            style='bgInput'
           />
           <ErrorMsg msg={errors.name?.message} />
         </label>
@@ -82,6 +83,7 @@ export default function SettingProfile() {
             placeholder='자기소개를 입력하세요.'
             readOnly={isLoading}
             register={bioChk}
+            style='bgInput'
           />
           <ErrorMsg msg={errors.bio?.message} />
         </label>

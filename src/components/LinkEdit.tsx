@@ -1,6 +1,7 @@
 'use client';
 
 import { SimpleLink } from '@/model/link';
+import Input from './ui/Input';
 
 type Props = {
   link: SimpleLink;
@@ -10,10 +11,10 @@ export default function LinkEdit({ link }: Props) {
   return (
     <div className='w-full'>
       <div>
-        <input type='text' value={link.title} />
+        <Input value={link.title} style='simpleInput' placeholder='Title' />
       </div>
       <div>
-        <input type='text' value={link.url} />
+        <Input value={link.url} style='simpleInput' placeholder='URL' />
       </div>
     </div>
   );
