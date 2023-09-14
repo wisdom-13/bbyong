@@ -24,10 +24,12 @@ export async function getUserByUserEmail(email: string) {
     `*[_type == "user" && email == "${email}"][0]{
       ...,
       "id":_id,
-      "links": *[_type == "link" && references(^._id) && isUse == true]{
+      "links": *[_type == "link" && references(^._id)]{
         "id": _id,
         title, 
         url,
+        click,
+        isUse,
       }
     }`
   );

@@ -1,17 +1,19 @@
 'use client';
 
-import { SimpleLink } from '@/model/link';
+import { Link } from '@/model/link';
 import Input from './ui/Input';
+import Toggle from './ui/Toggle';
 
 type Props = {
-  link: SimpleLink;
+  link: Link;
 }
 
 export default function LinkEdit({ link }: Props) {
   return (
-    <div className='w-full'>
-      <div>
-        <Input value={link.title} style='simpleInput' placeholder='Title' />
+    <div className='w-full mb-3'>
+      <div className='flex'>
+        <Input value={link.title} style='simpleInput' className='font-bold' placeholder='Title' />
+        <Toggle id={link.id} checked={link.isUse} />
       </div>
       <div>
         <Input value={link.url} style='simpleInput' placeholder='URL' />

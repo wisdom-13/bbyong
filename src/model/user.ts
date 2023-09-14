@@ -1,4 +1,4 @@
-import { SimpleLink } from './link';
+import { Link, SimpleLink } from './link';
 
 export type User = {
   id: string;
@@ -12,4 +12,8 @@ export type User = {
 
 export type UserDetail = User & {
   links: SimpleLink[];
+}
+
+export type UserAll = User & {
+  links: Link[];
 }

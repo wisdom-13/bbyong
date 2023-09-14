@@ -1,6 +1,6 @@
 'use client';
 
-import { UserDetail } from '@/model/user';
+import { UserAll } from '@/model/user';
 import useSWR from 'swr';
 import Button from './ui/Button';
 import { useForm } from "react-hook-form";
@@ -14,7 +14,7 @@ interface HookFormTypes {
 }
 
 export default function SettingProfile() {
-  const { data: user } = useSWR<UserDetail>(`/api/me`);
+  const { data: user } = useSWR<UserAll>(`/api/me`);
   const { register, formState: { errors }, handleSubmit, reset } = useForm<HookFormTypes>();
 
   const [isLoading, setIsLoading] = useState(false);

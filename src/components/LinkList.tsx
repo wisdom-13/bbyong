@@ -1,9 +1,9 @@
 import LinkButton from './LinkButton';
-import { SimpleLink } from '@/model/link';
+import { Link, SimpleLink } from '@/model/link';
 import LinkEdit from './LinkEdit';
 
 type Props = {
-  links: SimpleLink[];
+  links: Link[] | SimpleLink[];
   edit?: boolean
 }
 export default function LinkList({ links, edit = false }: Props) {
