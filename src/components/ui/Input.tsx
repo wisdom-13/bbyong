@@ -8,11 +8,21 @@ type Props = {
   rows?: number;
   value?: string;
   placeholder?: string;
-  readOnly?: boolean
+  readOnly?: boolean;
   register?: UseFormRegisterReturn;
 }
 
-export default function Input({ textarea = false, style = 'bgInput', className, type = 'text', rows = 5, value, placeholder, readOnly = false, register }: Props) {
+export default function Input({
+  textarea = false,
+  style = 'bgInput',
+  className = '',
+  type = 'text',
+  rows = 5,
+  value,
+  placeholder,
+  readOnly = false,
+  register
+}: Props) {
   return (
     <>
       {

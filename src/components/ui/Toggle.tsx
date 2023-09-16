@@ -9,7 +9,7 @@ type Props = {
   register?: UseFormRegisterReturn;
 }
 
-export default function Toggle({ id, size, text, checked = false, disabled = false, register }: Props) {
+export default function Toggle({ id, size, text, checked, disabled = false, register }: Props) {
   return (
     <>
       <label
