@@ -24,7 +24,12 @@ export default function SettingTitleUrl({ id, title }: Props) {
   }, [reset, title]);
 
   const onSubmit = (data: HookFormTypes) => {
-    console.log(data)
+    fetch('/api/setting/links', {
+      method: 'PUT',
+      body: JSON.stringify({ id, type: 'title', value: data.title }),
+    }).then(() => {
+      console.log('success')
+    });
   }
 
   const titleChk = register('title', {
@@ -36,12 +41,11 @@ export default function SettingTitleUrl({ id, title }: Props) {
     onBlur: handleSubmit(onSubmit)
   })
 
-
   return (
-    <div>
+    <>
       <Input style='simpleInput' className='font-bold' placeholder='Title' register={titleChk} />
       <ErrorMsg msg={errors.title?.message} />
-    </div>
+    </>
   );
 }
 

@@ -20,8 +20,14 @@ export default function SettingLinkUse({ id, isUse }: Props) {
     });
   }, [reset, isUse]);
 
+
   const onSubmit = (isUse: boolean) => {
-    console.log(isUse)
+    fetch('/api/setting/links', {
+      method: 'PUT',
+      body: JSON.stringify({ id, type: 'isUse', value: isUse }),
+    }).then(() => {
+      console.log('success')
+    });
   }
 
   const useChk = register('isUse', {

@@ -24,7 +24,12 @@ export default function SettingLinkUrl({ id, url }: Props) {
   }, [reset, url]);
 
   const onSubmit = (data: HookFormTypes) => {
-    console.log(data)
+    fetch('/api/setting/links', {
+      method: 'PUT',
+      body: JSON.stringify({ id, type: 'url', value: data.url }),
+    }).then(() => {
+      console.log('success')
+    });
   }
 
   const urlChk = register('url', {

@@ -1,16 +1,16 @@
-import { settingProfile } from '@/service/user';
+import { updateLink } from '@/service/link';
 import { withSessionUser } from '@/util/session';
 import { NextRequest, NextResponse } from 'next/server';
 
 export async function PUT(req: NextRequest) {
-  return withSessionUser(async (user) => {
-    const { name, bio } = await req.json();
+  return withSessionUser(async () => {
+    const { id, type, value } = await req.json();
 
-    if (name == null || bio == null) {
+    if (id == null || type == null) {
       return new Response('Bad Request', { status: 400 });
     }
 
-    return settingProfile(user.id, name, bio)
+    return updateLink(id, type, value)
       .then(res => NextResponse.json(res))
       .catch(error => new Response(JSON.stringify(error), { status: 500 }))
   })
