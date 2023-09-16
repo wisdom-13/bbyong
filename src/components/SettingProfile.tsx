@@ -15,7 +15,7 @@ interface HookFormTypes {
 
 export default function SettingProfile() {
   const { data: user } = useSWR<UserAll>(`/api/me`);
-  const { register, formState: { errors }, handleSubmit, reset } = useForm<HookFormTypes>();
+  const { register, formState: { errors }, handleSubmit, reset } = useForm<HookFormTypes>({ mode: 'onBlur' });
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -26,7 +26,7 @@ export default function SettingProfile() {
         bio: user.bio
       });
     }
-  }, [user]);
+  }, [reset, user]);
 
   if (!user) {
     return false;
