@@ -2,7 +2,7 @@
 
 import { UserAll } from '@/model/user';
 import useSWR from 'swr'
-import LinkList from './LinkList';
+import LinkEditList from './LinkEditList';
 
 export default function SettingLinks() {
   const { data: user } = useSWR<UserAll>(`/api/me`);
@@ -10,7 +10,7 @@ export default function SettingLinks() {
   return (
     <div>
       {
-        user?.links && <LinkList links={user.links} edit={true} />
+        user?.links && <LinkEditList links={user.links} />
       }
     </div>
   );

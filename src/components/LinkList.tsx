@@ -1,23 +1,17 @@
 import LinkButton from './LinkButton';
-import { Link, SimpleLink } from '@/model/link';
-import LinkEdit from './LinkEdit';
+import { SimpleLink } from '@/model/link';
 
 type Props = {
-  links: Link[] | SimpleLink[];
-  edit?: boolean
+  links: SimpleLink[];
 }
-export default function LinkList({ links, edit = false }: Props) {
+export default function LinkList({ links }: Props) {
 
   return (
     <div className='flex flex-col'>
       {
-        edit
-          ? links.map((link) => (
-            <LinkEdit key={link.id} link={link} />
-          ))
-          : links.map((link) => (
-            <LinkButton key={link.id} link={link} />
-          ))
+        links.map((link) => (
+          <LinkButton key={link.id} link={link} />
+        ))
       }
     </div>
   );
