@@ -12,26 +12,35 @@ interface HookFormTypes {
 export default function SettingLinkAdd() {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isChk, setIsChk] = useState<boolean>(false);
+  const [isLoading, setIsLoading] = useState(false);
+
+
+
   const { register, formState: { errors }, handleSubmit, reset } = useForm<HookFormTypes>({
     mode: 'onBlur',
     shouldFocusError: false,
   });
 
-  const onSubmit = () => {
-    setIsOpen(false)
-    setIsChk(false)
-    reset({
-      title: '',
-      url: '',
+  const onSubmit = (data: HookFormTypes) => {
+    setIsLoading(true);
+
+    fetch('/api/setting/links', {
+      method: 'POST',
+      body: JSON.stringify({ title: data.title, url: data.url }),
+    }).then(() => {
+      setIsOpen(false);
+      setIsChk(false);
+      setIsLoading(false);
+
+      reset({
+        title: '',
+        url: '',
+      });
     });
   }
 
   const onChk = () => {
     setIsChk(true)
-  }
-
-  const handleOpen = () => {
-    setIsOpen(true)
   }
 
   const titleChk = register('title', {
@@ -59,14 +68,16 @@ export default function SettingLinkAdd() {
         isOpen ?
           <div>
             <form onSubmit={handleSubmit(onSubmit)}>
-              <Input placeholder='Title' register={titleChk} />
-              <ErrorMsg msg={errors.title?.message} />
-              <Input placeholder='Url' className='mt-2' register={urlChk} />
-              <ErrorMsg msg={errors.url?.message} />
-              <Button text='추가하기1' color={isChk ? 'blue' : 'gray'} className='mt-2' disabled={!isChk} />
+              <div className='mb-2'>
+                <Input placeholder='Title' readOnly={isLoading} register={titleChk} />
+                <ErrorMsg msg={errors.title?.message} />
+                <Input placeholder='Url' className='mt-2' readOnly={isLoading} register={urlChk} />
+                <ErrorMsg msg={errors.url?.message} />
+              </div>
+              <Button text='추가하기1' color={isChk ? 'blue' : 'gray'} disabled={!isChk} isLoading={isLoading} />
             </form>
           </div>
-          : <Button text='추가하기2' color='blue' onClick={handleOpen} />
+          : <Button text='추가하기2' color='blue' onClick={() => setIsOpen(true)} />
       }
 
     </>

@@ -1,6 +1,19 @@
-import { updateLink } from '@/service/link';
+import { addLink, updateLink } from '@/service/link';
 import { withSessionUser } from '@/util/session';
 import { NextRequest, NextResponse } from 'next/server';
+
+export async function POST(req: NextRequest) {
+  return withSessionUser(async (user) => {
+    const { title, url } = await req.json();
+
+    if (!title || !url) {
+      return new Response('Bad Request', { status: 400 });
+    }
+
+    return addLink(user.id, title, url)
+      .then((data) => NextResponse.json(data));
+  })
+}
 
 export async function PUT(req: NextRequest) {
   return withSessionUser(async () => {
