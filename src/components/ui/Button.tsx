@@ -14,13 +14,13 @@ export default function Button({ text, color = 'gray', className, onClick, isLoa
 
   switch (color) {
     case 'gray':
-      colorStyle = 'bg-gray-50 hover:bg-gray-100';
+      colorStyle = `bg-gray-50 ${!disabled && 'hover:bg-gray-100'}`;
       break;
     case 'blue':
-      colorStyle = 'bg-blue-500 hover:bg-blue-600 text-white';
+      colorStyle = `bg-blue-500 text-white ${!disabled && 'hover:bg-blue-600'}`;
       break;
     case 'red':
-      colorStyle = 'bg-red-500 hover:bg-red-600 text-white';
+      colorStyle = `bg-red-500 text-white ${!disabled && 'hover:bg-red-600'}`;
       break;
   }
 
