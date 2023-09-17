@@ -29,6 +29,7 @@ export default {
       title: 'IsUse',
       name: 'isUse',
       type: 'boolean',
+      initialValue: true,
     }
   ]
 }
