@@ -8,6 +8,7 @@ import SettingLinkUse from './SettingLinkUse';
 import Button from './ui/Button';
 import { useState } from 'react';
 import SettingLinkAdd from './SettingLinkAdd';
+import DeleteIcon from './ui/icons/DeleteIcon';
 
 export default function SettingLinks() {
 
@@ -18,6 +19,9 @@ export default function SettingLinks() {
     return false;
   }
 
+  const handleDelete = (id: string) => {
+
+  }
 
 
   return (
@@ -25,16 +29,20 @@ export default function SettingLinks() {
       <div className='mb-3'>
         <SettingLinkAdd />
       </div>
-      <div className='flex flex-col'>
+      <div>
         {
           links.map((link) => (
-            <div key={link.id} className='w-full mb-3'>
-              <div className='flex'>
+            <div key={link.id} className='w-full mb-5 flex items-center justify-between'>
+              <div className='flex flex-col'>
                 <SettingLinkTitle id={link.id} title={link.title} />
-                <SettingLinkUse id={link.id} isUse={link.isUse} />
-              </div>
-              <div>
                 <SettingLinkUrl id={link.id} url={link.url} />
+              </div>
+              <div className='flex flex-col items-end'>
+                <SettingLinkUse id={link.id} isUse={link.isUse} />
+                <button className='mt-2' onClick={() => handleDelete(link.id)}>
+                  <DeleteIcon className='text-gray-500' />
+                </button>
+
               </div>
             </div>
           ))
