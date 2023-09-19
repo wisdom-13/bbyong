@@ -6,7 +6,7 @@ import SettingLinkTitle from './SettingLinkTitle';
 import SettingLinkUrl from './SettingLinkUrl';
 import SettingLinkUse from './SettingLinkUse';
 import SettingLinkAdd from './SettingLinkAdd';
-import DeleteIcon from './ui/icons/DeleteIcon';
+import SettingLinkDelete from './SettingLinkDelete';
 
 export default function SettingLinks() {
 
@@ -17,16 +17,6 @@ export default function SettingLinks() {
     return false;
   }
 
-  const handleDelete = (id: string) => {
-    fetch('/api/setting/links', {
-      method: 'PUT',
-      body: JSON.stringify({ id, type: 'delete' }),
-    }).then(() => {
-      console.log('success')
-    });
-  }
-
-
   return (
     <div>
       <div className='mb-3'>
@@ -35,18 +25,17 @@ export default function SettingLinks() {
       <div>
         {
           links.map((link) => (
-            <div key={link.id} className='w-full mb-5 flex items-center justify-between'>
-              <div className='flex flex-col'>
-                <SettingLinkTitle id={link.id} title={link.title} />
-                <SettingLinkUrl id={link.id} url={link.url} />
+            <div key={link.id} className='mb-5'>
+              <div className='w-full flex items-center justify-between'>
+                <div className='flex flex-col'>
+                  <SettingLinkTitle id={link.id} title={link.title} />
+                  <SettingLinkUrl id={link.id} url={link.url} />
+                </div>
+                <div className='flex flex-col items-end'>
+                  <SettingLinkUse id={link.id} isUse={link.isUse} />
+                </div>
               </div>
-              <div className='flex flex-col items-end'>
-                <SettingLinkUse id={link.id} isUse={link.isUse} />
-                <button className='mt-2' onClick={() => handleDelete(link.id)}>
-                  <DeleteIcon className='text-gray-500' />
-                </button>
-
-              </div>
+              <SettingLinkDelete id={link.id} />
             </div>
           ))
         }
