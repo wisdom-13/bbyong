@@ -10,7 +10,7 @@ type Props = {
 }
 
 export default function SettingLinkDelete({ id, mutate }: Props) {
-  const [deleted, setDeleted] = useState(false);
+  const [isDelete, setIsDelete] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
   const handleDelete = (id: string) => {
@@ -26,14 +26,14 @@ export default function SettingLinkDelete({ id, mutate }: Props) {
 
   return (
     <>
-      <button className='mt-2' onClick={() => setDeleted(true)}>
-        <DeleteIcon className={`${deleted ? 'text-red-500' : 'text-gray-500'}`} />
+      <button className='mt-2' onClick={() => setIsDelete(!isDelete)}>
+        <DeleteIcon className={`${isDelete ? 'text-red-500' : 'text-gray-500'}`} />
       </button>
-      {deleted &&
+      {isDelete &&
         <div>
           <p>이 링크를 삭제할까요?</p>
           <div className='flex w-full'>
-            <Button text='취소' color='gray' onClick={() => setDeleted(false)} disabled={isLoading} />
+            <Button text='취소' color='gray' onClick={() => setIsDelete(false)} disabled={isLoading} />
             <Button text='삭제' color='red' onClick={() => handleDelete(id)} disabled={isLoading} isLoading={isLoading} />
           </div>
         </div>
