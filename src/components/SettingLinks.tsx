@@ -5,8 +5,6 @@ import useSWR from 'swr'
 import SettingLinkTitle from './SettingLinkTitle';
 import SettingLinkUrl from './SettingLinkUrl';
 import SettingLinkUse from './SettingLinkUse';
-import Button from './ui/Button';
-import { useState } from 'react';
 import SettingLinkAdd from './SettingLinkAdd';
 import DeleteIcon from './ui/icons/DeleteIcon';
 
@@ -20,7 +18,12 @@ export default function SettingLinks() {
   }
 
   const handleDelete = (id: string) => {
-
+    fetch('/api/setting/links', {
+      method: 'PUT',
+      body: JSON.stringify({ id, type: 'delete' }),
+    }).then(() => {
+      console.log('success')
+    });
   }
 
 

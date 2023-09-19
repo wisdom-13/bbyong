@@ -1,4 +1,4 @@
-import { addLink, updateLink } from '@/service/link';
+import { addLink, deleteLink, updateLink } from '@/service/link';
 import { withSessionUser } from '@/util/session';
 import { NextRequest, NextResponse } from 'next/server';
 
@@ -23,7 +23,9 @@ export async function PUT(req: NextRequest) {
       return new Response('Bad Request', { status: 400 });
     }
 
-    return updateLink(id, type, value)
+    const request = type == 'delete' ? deleteLink(id) : updateLink(id, type, value);
+
+    return request
       .then(res => NextResponse.json(res))
       .catch(error => new Response(JSON.stringify(error), { status: 500 }))
   })

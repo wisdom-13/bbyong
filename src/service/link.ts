@@ -27,3 +27,8 @@ export async function updateLink(linkId: string, type: string, value: string) {
     .set({ [type]: value })
     .commit({ autoGenerateArrayKeys: true });
 }
+
+export async function deleteLink(linkId: string) {
+  return client
+    .delete(linkId)
+}
