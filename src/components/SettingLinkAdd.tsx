@@ -3,13 +3,19 @@ import Input from './ui/Input';
 import { useForm } from 'react-hook-form';
 import Button from './ui/Button';
 import ErrorMsg from './ui/ErrorMsg';
+import { KeyedMutator } from 'swr';
+import { UserAll } from '@/model/user';
+
+type Props = {
+  mutate: KeyedMutator<UserAll>;
+}
 
 interface HookFormTypes {
   title: string;
   url: string;
 }
 
-export default function SettingLinkAdd() {
+export default function SettingLinkAdd({ mutate }: Props) {
   const [isOpen, setIsOpen] = useState<boolean>(false);
   const [isChk, setIsChk] = useState<boolean>(false);
   const [isLoading, setIsLoading] = useState(false);
@@ -31,6 +37,7 @@ export default function SettingLinkAdd() {
       setIsOpen(false);
       setIsChk(false);
       setIsLoading(false);
+      mutate();
 
       reset({
         title: '',

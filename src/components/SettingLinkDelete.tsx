@@ -1,12 +1,15 @@
 import { useState } from 'react';
 import Button from './ui/Button';
 import DeleteIcon from './ui/icons/DeleteIcon';
+import { KeyedMutator } from 'swr';
+import { UserAll } from '@/model/user';
 
 type Props = {
   id: string;
+  mutate: KeyedMutator<UserAll>;
 }
 
-export default function SettingLinkDelete({ id }: Props) {
+export default function SettingLinkDelete({ id, mutate }: Props) {
   const [deleted, setDeleted] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
 
@@ -17,7 +20,7 @@ export default function SettingLinkDelete({ id }: Props) {
       method: 'PUT',
       body: JSON.stringify({ id, type: 'delete' }),
     }).then(() => {
-      console.log('success')
+      mutate()
     });
   }
 

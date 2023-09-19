@@ -10,7 +10,7 @@ import SettingLinkDelete from './SettingLinkDelete';
 
 export default function SettingLinks() {
 
-  const { data: user } = useSWR<UserAll>(`/api/me`);
+  const { data: user, mutate } = useSWR<UserAll>(`/api/me`);
   const links = user?.links;
 
   if (!links) {
@@ -20,7 +20,7 @@ export default function SettingLinks() {
   return (
     <div>
       <div className='mb-3'>
-        <SettingLinkAdd />
+        <SettingLinkAdd mutate={mutate} />
       </div>
       <div>
         {
@@ -35,7 +35,7 @@ export default function SettingLinks() {
                   <SettingLinkUse id={link.id} isUse={link.isUse} />
                 </div>
               </div>
-              <SettingLinkDelete id={link.id} />
+              <SettingLinkDelete id={link.id} mutate={mutate} />
             </div>
           ))
         }
