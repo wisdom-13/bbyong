@@ -20,6 +20,12 @@ export default {
       type: 'string',
     },
     {
+      title: 'Index',
+      name: 'index',
+      type: 'number',
+      initialValue: 0,
+    },
+    {
       title: 'Click',
       name: 'click',
       type: 'number',
