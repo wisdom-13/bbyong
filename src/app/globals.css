@@ -2,6 +2,16 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none
+}
+
+img {
+  -webkit-user-drag: none;
+}
 
 input:checked~.dot {
   transform: translateX(100%);
