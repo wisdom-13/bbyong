@@ -22,7 +22,9 @@ export default function Main() {
           user ? (
             <>
               <Image src='/mole.png' width={300} height={300} alt='mole' />
-              <Link href={user.address ? `/${user.address}` : '/setting/address'}>내 두더지집</Link>
+              <Link href={user.address ? `/${user.address}` : '/setting/address'}>
+                <Button color='blue' text='내 두더지집' />
+              </Link>
               <Button text='로그아웃' onClick={() => signOut()} />
             </>
           ) : (
