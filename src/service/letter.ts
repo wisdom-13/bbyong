@@ -5,6 +5,7 @@ export async function getLetterList(address: string) {
     `*[_type == "letter" && to->address == "${address}"]{
       ...,
       "id":_id,
+      "createdAt":_createdAt
     }`
   );
 }

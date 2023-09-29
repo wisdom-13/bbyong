@@ -7,4 +7,5 @@ export type Letter = {
   context: string;
   ip: string;
   isPublic: boolean;
+  createdAt: string;
 }
