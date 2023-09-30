@@ -6,6 +6,7 @@ import useSWR from 'swr';
 import { Letter } from '@/model/letter';
 import LetterItem from './LetterItem';
 import Button from './ui/Button';
+import Link from 'next/link';
 
 type Props = {
   address: string;
@@ -26,7 +27,9 @@ export default function LetterList({ address }: Props) {
         }
       </div>
       <div className='w-full absolute bottom-0'>
-        <Button className='rounded-none' color='blue' text='작성하기' />
+        <Link href={`/letter/write/${address}`}>
+          <Button className='rounded-none' color='blue' text='작성하기' />
+        </Link>
       </div>
     </div>
   );
