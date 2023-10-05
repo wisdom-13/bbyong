@@ -19,7 +19,7 @@ export default function LetterList({ address }: Props) {
   return (
     <div className='w-full h-screen relative'>
       <Title text='우편함' />
-      <div className=' h-[calc(100vh-116px)] px-6 overflow-scroll'>
+      <div className=' h-[calc(100vh-116px)] px-6 overflow-scroll scrollbar-hide'>
         {
           letters?.map((letter) =>
             <LetterItem letter={letter} />
