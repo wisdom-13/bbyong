@@ -17,6 +17,7 @@ interface HookFormTypes {
   title: string;
   name: string;
   content: string;
+  isHidden: boolean;
 }
 
 export default function LetterWrite({ address }: Props) {
@@ -35,7 +36,7 @@ export default function LetterWrite({ address }: Props) {
 
   const onSubmit = (data: HookFormTypes) => {
     setIsLoading(true);
-    console.log(user.id)
+    console.log(data)
   }
 
   const nameChk = register('name', {
@@ -81,6 +82,11 @@ export default function LetterWrite({ address }: Props) {
             <Input textarea={true} placeholder='내용' register={contentChk} />
             <ErrorMsg msg={errors.content?.message} />
           </label>
+          <label className='flex items-center mb-5'>
+            <input type='checkbox' {...register('isHidden')} />
+            <span className='font-semibold pl-2'>비공개</span>
+          </label>
+
           <Button color='blue' text='작성하기' isLoading={isLoading} />
         </form>
       </div>
