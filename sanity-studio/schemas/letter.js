@@ -20,8 +20,8 @@ export default {
       type: 'string',
     },
     {
-      title: 'Context',
-      name: 'context',
+      title: 'contents',
+      name: 'contents',
       type: 'text',
     },
     {

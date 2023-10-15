@@ -4,7 +4,7 @@ export type Letter = {
   to: User;
   title: string;
   name: string;
-  context: string;
+  contents: string;
   ip: string;
   isPublic: boolean;
   createdAt: string;
