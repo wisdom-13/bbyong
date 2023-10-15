@@ -19,10 +19,9 @@ export default function LetterList({ address }: Props) {
     <div className='w-full h-screen relative'>
       <Title text='우편함' />
       <div className=' h-[calc(100vh-116px)] px-6 overflow-scroll scrollbar-hide'>
-
         {
           letters?.map((letter) =>
-            <LetterItem letter={letter} />
+            <LetterItem key={letter.createdAt} letter={letter} />
           )
         }
       </div>
