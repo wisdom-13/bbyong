@@ -8,19 +8,22 @@ import { useState } from 'react';
 import ErrorMsg from './ui/ErrorMsg';
 import { UserDetail } from '@/model/user';
 import useSWR from 'swr'
+import { useRouter } from 'next/navigation';
 
 type Props = {
   address: string;
 }
 
 interface HookFormTypes {
+  userId: string;
   title: string;
   name: string;
-  content: string;
-  isHidden: boolean;
+  contents: string;
+  isPublic: boolean;
 }
 
 export default function LetterWrite({ address }: Props) {
+  const router = useRouter();
   const { data: user } = useSWR<UserDetail>(`/api/profile/${address}`);
 
   const [isLoading, setIsLoading] = useState(false);
@@ -36,7 +39,14 @@ export default function LetterWrite({ address }: Props) {
 
   const onSubmit = (data: HookFormTypes) => {
     setIsLoading(true);
-    console.log(data)
+
+    fetch('/api/letter', {
+      method: 'POST',
+      body: JSON.stringify(data),
+    }).then(() => {
+      setIsLoading(false);
+      router.push(`/letter/${address}`)
+    });
   }
 
   const nameChk = register('name', {
@@ -55,7 +65,7 @@ export default function LetterWrite({ address }: Props) {
     },
   });
 
-  const contentChk = register('content', {
+  const contentsChk = register('contents', {
     required: true,
     minLength: {
       value: 10,
@@ -79,14 +89,14 @@ export default function LetterWrite({ address }: Props) {
             <ErrorMsg msg={errors.title?.message} />
           </label>
           <label className='block mb-3'>
-            <Input textarea={true} placeholder='내용' register={contentChk} />
-            <ErrorMsg msg={errors.content?.message} />
+            <Input textarea={true} placeholder='내용' register={contentsChk} />
+            <ErrorMsg msg={errors.contents?.message} />
           </label>
           <label className='flex items-center mb-5'>
-            <input type='checkbox' {...register('isHidden')} />
+            <input type='checkbox' {...register('isPublic')} />
             <span className='font-semibold pl-2'>비공개</span>
           </label>
-
+          <input type='hidden' value={user.id}  {...register('userId')} />
           <Button color='blue' text='작성하기' isLoading={isLoading} />
         </form>
       </div>

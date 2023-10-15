@@ -12,7 +12,7 @@ export default function LetterItem({ letter }: Props) {
         <div className='flex'>
           <b>{letter.title}</b> - <span>{letter.name}</span>
         </div>
-        <div className='py-2 whitespace-pre-wrap'>{letter.context}</div>
+        <div className='py-2 whitespace-pre-wrap'>{letter.contents}</div>
         <p className='text-xs text-gray-500'>{parseDate(letter.createdAt)}</p>
       </div>
     </>

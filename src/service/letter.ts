@@ -9,3 +9,17 @@ export async function getLetterList(address: string) {
     }`
   );
 }
+
+export async function sendLetter(userId: string, name: string, title: string, contents: string, isPublic: boolean) {
+  return client.create(
+    {
+      _type: 'letter',
+      to: { _ref: userId },
+      name,
+      title,
+      contents,
+      isPublic
+    },
+    { autoGenerateArrayKeys: true }
+  );
+}
