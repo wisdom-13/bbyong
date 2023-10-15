@@ -8,6 +8,6 @@ export async function POST(req: NextRequest) {
     return new Response('Bad Request', { status: 400 });
   }
 
-  return sendLetter(userId, name, title, contents, isPublic)
+  return sendLetter(userId, name, title, contents, !isPublic)
     .then((data) => NextResponse.json(data));
 }
