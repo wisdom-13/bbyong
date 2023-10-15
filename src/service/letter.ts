@@ -2,7 +2,8 @@ import { client } from './sanity';
 
 export async function getLetterList(address: string) {
   return client.fetch(
-    `*[_type == "letter" && to->address == "${address}"]{
+    `*[_type == "letter" && to->address == "${address}"]
+      | order(_createdAt desc){
       ...,
       "id":_id,
       "createdAt":_createdAt
