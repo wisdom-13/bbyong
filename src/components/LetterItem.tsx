@@ -14,7 +14,7 @@ export default function LetterItem({ letter }: Props) {
           <div>
             <b>{letter.title}</b> - <span>{letter.name}</span>
           </div>
-          {letter.isPublic && <div><LockIcon className='text-gray-500' /></div>}
+          {!letter.isPublic && <div><LockIcon className='text-gray-500' /></div>}
         </div>
         <div className='py-2 whitespace-pre-wrap'>{letter.contents}</div>
         <p className='text-xs text-gray-500'>{parseDate(letter.createdAt)}</p>
