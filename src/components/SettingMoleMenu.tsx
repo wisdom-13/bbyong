@@ -18,7 +18,7 @@ export default function SettingMoleMenu() {
   };
 
   return (
-    <div className='p-6'>
+    <div>
       <div ref={moleImageRef} className='moleImage relative'>
         <Image src='/mole.png' width={300} height={300} alt='mole' />
         <div className='absolute top-3 left-10'>
