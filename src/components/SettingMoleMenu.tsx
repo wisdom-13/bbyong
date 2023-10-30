@@ -18,7 +18,6 @@ export default function SettingMoleMenu() {
     });
   };
 
-
   return (
     <div>
       <div ref={moleImageRef} className='moleImage relative'>
@@ -37,7 +36,11 @@ export default function SettingMoleMenu() {
         tab == '1' &&
         <div className='mt-3'>
           <div className='grid grid-cols-4 gap-4'>
-            <div className='w-[80px] h-[80px] bg-blue-100'>item1</div>
+
+            <div className='w-[80px] h-[80px] bg-blue-100'>
+              <Image src={`/moleItem/type1/1-1.png`} width={80} height={80} alt='item1-1' />
+            </div>
+
             <div className='w-[80px] h-[80px] bg-blue-100'>item1</div>
             <div className='w-[80px] h-[80px] bg-blue-100'>item1</div>
             <div className='w-[80px] h-[80px] bg-blue-100'>item1</div>
