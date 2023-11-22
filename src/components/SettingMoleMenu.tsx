@@ -10,6 +10,7 @@ import { useRef, useState } from 'react';
 export default function SettingMoleMenu() {
   const moleImageRef = useRef<HTMLDivElement>(null);
   const [tab, setTab] = useState(1);
+  const [item, setItem] = useState<{ item1: Number, item2: Number, item3: Number, item4: Number }>({ item1: 0, item2: 0, item3: 0, item4: 0 });
 
   const onDownload = () => {
     if (!moleImageRef.current) return
@@ -24,7 +25,7 @@ export default function SettingMoleMenu() {
     let arr = [];
     for (let i = 1; i <= 5; i++) {
       arr.push(
-        <div className='w-[80px] h-[80px] bg-blue-100'>
+        <div className='w-[80px] h-[80px] bg-blue-100' onClick={() => setItem((item) => ({ ...item, ['item' + menu]: i }))}>
           <Image src={`/moleItem/type${menu}/${menu}-${i}.png`} width={80} height={80} alt={`item${menu}-${i}`} />
         </div>
       )
@@ -37,7 +38,9 @@ export default function SettingMoleMenu() {
       <div ref={moleImageRef} className='moleImage relative'>
         <Image src='/mole.png' width={300} height={300} alt='mole' />
         <div className='absolute top-3 left-10'>
-          <div className='w-[80px] h-[80px] bg-blue-100'>item</div>
+          <div className='w-[80px] h-[80px] bg-blue-100'>
+            {item.item1 != 0 && <Image src={`/moleItem/type1/1-${item.item1}.png`} width={80} height={80} alt={`item1-${item.item1}`} />}
+          </div>
         </div>
       </div>
 
