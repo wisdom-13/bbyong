@@ -20,6 +20,7 @@ export default function SettingMoleMenu() {
   };
 
   const tmpItemMenu = ['눈', '머리', '옷', '장식'];
+  const itemPos = [[0, 0], [0, 100], [100, 0], [100, 100]]
 
   const tmpItemList = (menu: Number) => {
     let arr = [];
@@ -37,11 +38,17 @@ export default function SettingMoleMenu() {
     <div>
       <div ref={moleImageRef} className='moleImage relative'>
         <Image src='/mole.png' width={300} height={300} alt='mole' />
-        <div className='absolute top-3 left-10'>
-          <div className='w-[80px] h-[80px] bg-blue-100'>
-            {item.item1 != 0 && <Image src={`/moleItem/type1/1-${item.item1}.png`} width={80} height={80} alt={`item1-${item.item1}`} />}
-          </div>
-        </div>
+
+        {
+          itemPos.map(([x, y], i) => (
+            <div key={i} className='absolute' style={{ top: `${y}px`, left: `${x}px` }}>
+              <div className={`w-[80px] h-[80px] bg-blue-100`}>
+                {item.item1 != 0 && <Image src={`/moleItem/type1/1-${item.item1}.png`} width={80} height={80} alt={`item1-${item.item1}`} />}
+              </div>
+            </div>
+          ))
+        }
+
       </div>
 
       <div className='flex mt-3 items-center h-10'>
