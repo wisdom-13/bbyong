@@ -17,15 +17,16 @@ export default function Main() {
   return (
     <>
       <Title text='뿅' />
-      <div className='flex flex-col gap-3 p-6'>
+      <div className='flex flex-col gap-1 p-6'>
         {
           user ? (
             <>
-              <Image src='/main_mole.png' width={300} height={300} alt='mole' />
+              <Image src='/main_mole.png' width={300} height={300} alt='mole' className='w-[300px] m-auto' />
+              <br></br>
               <Link href={user.address ? `/${user.address}` : '/setting/address'}>
-                <Button label='내 두더지집' />
+                <Button label='내 두더지집' primary={true} />
               </Link>
-              <Button label='로그아웃' onClick={() => signOut()} />
+              <Button type='link' label='로그아웃' onClick={() => signOut()} />
             </>
           ) : (
             <Button label='시작하기' onClick={() => signIn()} />
