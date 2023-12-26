@@ -1,8 +1,12 @@
+import { MoonLoader } from 'react-spinners';
+
 interface ButtonProps {
   type?: 'button' | 'link';
   primary?: boolean;
-  backgroundColor?: string;
+  className?: string;
   size?: 'small' | 'medium' | 'large';
+  isLoading?: boolean;
+  disabled?: boolean;
   label: string;
   onClick?: () => void;
 }
@@ -11,7 +15,9 @@ export const Button = ({
   type = 'button',
   primary = false,
   size = 'medium',
-  backgroundColor,
+  isLoading = false,
+  disabled = false,
+  className,
   label,
   ...props
 }: ButtonProps) => {
@@ -20,7 +26,7 @@ export const Button = ({
 
   switch (type) {
     case 'button':
-      baseStyle = `w-full border rounded-full p-3 ${primary ? 'bg-mainColor text-white' : 'bg-white'}`;
+      baseStyle = `relative w-full h-[46px] border rounded-full p-3 ${primary ? 'bg-mainColor text-white' : 'bg-subColor'} ${isLoading || disabled && 'opacity-80'}`;
       break;
     case 'link':
       baseStyle = `inline-block p-1`;
@@ -30,11 +36,18 @@ export const Button = ({
   return (
 
     <button
-      type="button"
-      className={`${baseStyle}`}
+      className={`${baseStyle} ${className}`}
+      disabled={disabled || isLoading}
       {...props}
     >
-      {label}
+      {isLoading
+        ?
+        <span className='absolute z-20 inset-0 flex justify-center items-center'>
+          <MoonLoader color='white' size={15} speedMultiplier={0.5} />
+        </span>
+        :
+        label
+      }
     </button>
   );
 };
