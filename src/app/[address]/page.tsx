@@ -30,7 +30,7 @@ export async function generateMetadata({
 }: Props): Promise<Metadata> {
   const user = await getUserByUserAddress(address);
   return {
-    title: `${user.name}의 두더지집`,
-    description: `${user?.name}의 두더지집입니다.`,
+    title: `${user.name}의 집`,
+    description: `${user?.name}의 집입니다.`,
   };
 }
