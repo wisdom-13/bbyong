@@ -1,10 +1,10 @@
-import { AiOutlineLock } from 'react-icons/ai';
+import { FaLock } from "react-icons/fa6";
 
 type Props = {
   className?: string | '';
 }
 export default function LockIcon({ className = '' }: Props) {
-  return <AiOutlineLock className={className} size='20' />;
+  return <FaLock className={className} />;
 }
 
 
