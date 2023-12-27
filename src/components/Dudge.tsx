@@ -1,8 +1,9 @@
 'use client'
 
 import { useState } from "react";
-import Button from './ui/Button';
-
+// import Button from './ui/Button';
+import Image from 'next/image';
+const carrotSound = new Audio('/sound/carrot_pull.mp3');
 
 type Props = {
   userId: string;
@@ -10,11 +11,13 @@ type Props = {
 }
 
 export default function Dudge({ userId, dudge = 0 }: Props) {
-
   const [count, setCount] = useState(dudge);
 
   const handleClick = () => {
     setCount(count + 1);
+
+    carrotSound.currentTime = 0;
+    carrotSound.play();
 
     fetch('/api/dudge', {
       method: 'PUT',
@@ -24,8 +27,13 @@ export default function Dudge({ userId, dudge = 0 }: Props) {
 
   return (
     <div>
-      <div>카운트:{count}</div>
-      <Button text='뿅' className='mt-3' onClick={handleClick} />
+      <button className='mt-3 w-full hover:scale-105' onClick={handleClick}>
+        <Image src='/main_mole.png' width={300} height={300} alt='mole' className='w-[300px] m-auto' />
+      </button>
+      <div className='text-xs bg-white rounded-full text-mainColor py-1 flex items-center w-24 m-auto justify-center relative z-10'>
+        <Image src='/hammer.png' width={20} height={20} alt='hammer' className='mr-2' />
+        {count > 9999999 ? 9999999 : count}
+      </div>
     </div>
   );
 }
