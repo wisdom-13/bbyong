@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import Button from './ui/Button';
 import DeleteIcon from './ui/icons/DeleteIcon';
 import { KeyedMutator } from 'swr';
 import { UserAll } from '@/model/user';
+import { Button } from '@/stories/Button';
 
 type Props = {
   id: string;
@@ -25,20 +25,21 @@ export default function SettingLinkDelete({ id, mutate }: Props) {
   }
 
   return (
-    <>
-      <button className='mt-2' onClick={() => setIsDelete(!isDelete)}>
-        <DeleteIcon className={`${isDelete ? 'text-red-500' : 'text-gray-500'}`} />
+    <div className='w-full h-[34px] flex items-center justify-start pt-2'>
+      <button onClick={() => setIsDelete(!isDelete)}>
+        <DeleteIcon className={`${isDelete ? 'text-dangerColor' : 'text-gray-500'}`} />
       </button>
-      {isDelete &&
-        <div>
-          <p>이 링크를 삭제할까요?</p>
-          <div className='flex w-full'>
-            <Button text='취소' color='gray' onClick={() => setIsDelete(false)} disabled={isLoading} />
-            <Button text='삭제' color='red' onClick={() => handleDelete(id)} disabled={isLoading} isLoading={isLoading} />
+      {
+        isDelete &&
+        <>
+          <p className='pl-2 text-dangerColor'>이 링크를 삭제할까요?</p>
+          <div className='flex ml-auto'>
+            <Button label='취소' size='small' className='mr-1' onClick={() => setIsDelete(false)} disabled={isLoading} />
+            <Button label='삭제' size='small' primary={true} onClick={() => handleDelete(id)} disabled={isLoading} isLoading={isLoading} />
           </div>
-        </div>
+        </>
       }
-    </>
+    </div>
   );
 }
 

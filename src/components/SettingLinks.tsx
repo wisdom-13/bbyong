@@ -25,13 +25,13 @@ export default function SettingLinks() {
       <div>
         {
           links.map((link) => (
-            <div key={link.id} className='mb-5'>
-              <div className='w-full flex items-center justify-between'>
-                <div className='flex flex-col'>
+            <div key={link.id} className='mb-5 bg-white rounded-lg p-4'>
+              <div className='w-full flex items-center justify-between '>
+                <div className='w-full pr-3'>
                   <SettingLinkTitle id={link.id} title={link.title} />
                   <SettingLinkUrl id={link.id} url={link.url} />
                 </div>
-                <div className='flex flex-col items-end'>
+                <div>
                   <SettingLinkUse id={link.id} isUse={link.isUse} />
                 </div>
               </div>

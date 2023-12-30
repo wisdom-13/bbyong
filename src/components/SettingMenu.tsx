@@ -1,10 +1,9 @@
-import Title from '@/components/ui/Title';
 import Link from 'next/link';
 
 const tabs = [
   { 'href': 'profile', 'title': '프로필' },
-  { 'href': 'links', 'title': '링크' },
-  { 'href': 'mole', 'title': '두더지' },
+  { 'href': 'links', 'title': '두더지 굴' },
+  // { 'href': 'mole', 'title': '두더지' },
 ];
 
 export default function SettingMenu() {

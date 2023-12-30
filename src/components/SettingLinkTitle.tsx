@@ -1,7 +1,7 @@
-import Input from './ui/Input';
 import ErrorMsg from './ui/ErrorMsg';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
+import { Input } from '@/stories/Input';
 
 interface HookFormTypes {
   title: string;
@@ -43,7 +43,7 @@ export default function SettingTitleUrl({ id, title }: Props) {
 
   return (
     <>
-      <Input style='simpleInput' className='font-bold' placeholder='Title' register={titleChk} />
+      <Input style='simpleInput' className='font-bold bg-transparent' placeholder='Title' register={titleChk} />
       <ErrorMsg msg={errors.title?.message} />
     </>
   );

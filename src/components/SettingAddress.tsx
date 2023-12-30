@@ -1,11 +1,11 @@
 'use client'
 
 import { FormEvent, useState } from 'react';
-import Button from './ui/Button';
 import useDebounce from '@/hooks/debounce';
 import useSWR from 'swr';
 import { MoonLoader } from 'react-spinners';
 import { useRouter } from 'next/navigation';
+import { Button } from '@/stories/Button';
 
 export default function SettingAddress() {
   const router = useRouter();
@@ -45,8 +45,8 @@ export default function SettingAddress() {
 
   return (
     <form className='flex flex-col gap-3' onSubmit={handleSubmit}>
-      <p className='text-sm'>입력한 문자로 링크를 생성합니다.</p>
-      <label className={`flex relative border rounded-md p-3 ${successChk ? 'border-blue-500' : 'border-gray-100'}`}>
+      <p className='text-sm'>입력한 문자로 경로를 생성합니다.</p>
+      <label className={`flex relative border rounded-lg p-3 bg-white ${successChk ? 'border-mainColor' : 'border-gray-100'}`}>
         <p className='text-gray-500'>bbyong.com/</p>
         <input
           className='w-full outline-none'
@@ -61,7 +61,7 @@ export default function SettingAddress() {
         }
       </label>
       {(!isLoading && errorMsg) && <p className='text-red-500 text-xs'>{errorMsg}</p>}
-      <Button text='시작하기' color={`${successChk ? 'blue' : 'gray'}`} disabled={!successChk} />
+      <Button label='집 만들기' primary={successChk} disabled={!successChk} />
     </form>
   );
 }

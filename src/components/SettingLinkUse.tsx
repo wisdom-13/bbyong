@@ -1,6 +1,6 @@
 import { useForm } from 'react-hook-form';
-import Toggle from './ui/Toggle';
 import { useEffect } from 'react';
+import { Toggle } from '@/stories/Toggle';
 
 type Props = {
   id: string;

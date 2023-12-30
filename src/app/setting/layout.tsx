@@ -1,5 +1,4 @@
-import Title from '@/components/ui/Title';
-
+import { Title } from '@/stories/Title';
 
 export default function layout({
   children,
@@ -8,7 +7,7 @@ export default function layout({
 }) {
   return (
     <div>
-      <Title text='설정' />
+      <Title text='설정' homeLink={true} />
       {children}
     </div>
   );

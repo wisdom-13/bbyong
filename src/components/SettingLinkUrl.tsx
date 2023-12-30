@@ -1,7 +1,7 @@
-import Input from './ui/Input';
 import ErrorMsg from './ui/ErrorMsg';
 import { useForm } from 'react-hook-form';
 import { useEffect } from 'react';
+import { Input } from '@/stories/Input';
 
 interface HookFormTypes {
   url: string;

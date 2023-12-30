@@ -2,11 +2,11 @@
 
 import { UserAll } from '@/model/user';
 import useSWR from 'swr';
-import Button from './ui/Button';
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from 'react';
 import Input from './ui/Input';
 import ErrorMsg from './ui/ErrorMsg';
+import { Button } from '@/stories/Button';
 
 interface HookFormTypes {
   name: string;
@@ -87,7 +87,7 @@ export default function SettingProfile() {
           />
           <ErrorMsg msg={errors.bio?.message} />
         </label>
-        <Button text='저장하기' color='blue' isLoading={isLoading} />
+        <Button label='저장하기' primary={true} isLoading={isLoading} />
       </form>
     </>
   );
