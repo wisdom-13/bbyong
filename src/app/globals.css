@@ -9,12 +9,27 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Dovemayo_gothic';
+  src: url('https://cdn.jsdelivr.net/gh/projectnoonnu/noonfonts_2302@1.1/Dovemayo_gothic.woff2') format('woff2');
+  font-weight: normal;
+  font-style: normal;
+}
+
 body {
   -webkit-user-select: none;
   -moz-user-select: none;
   -ms-user-select: none;
   user-select: none;
-  font-family: 'KCCMurukmuruk'
+  font-family: 'Dovemayo_gothic';
+  /* font-family: 'KCCMurukmuruk' */
+  cursor: url(/cursor.cur), auto;
+  color: #333;
+}
+
+a,
+button {
+  cursor: url(/cursor.cur), auto;
 }
 
 img {
@@ -23,5 +38,5 @@ img {
 
 input:checked~.dot {
   transform: translateX(100%);
-  background-color: rgb(59 130 246);
+  background-color: #713f12;
 }

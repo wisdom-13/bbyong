@@ -9,7 +9,10 @@ module.exports = {
     extend: {
       colors: {
         bgColor: '#e7e5e4',
-        mainColor: '#78716c'
+        subColor: '#F4EDE5',
+        mainColor: '#713f12',
+        dangerColor: '#b91c1c',
+        textColor: '#333',
       },
       backgroundImage: {
         'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
