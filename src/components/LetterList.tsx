@@ -1,14 +1,14 @@
 'use client';
 
 import React from 'react';
-import Title from './ui/Title';
 import useSWR from 'swr';
 import { Letter } from '@/model/letter';
 import LetterItem from './LetterItem';
-import Button from './ui/Button';
 import Link from 'next/link';
 import { useSession } from 'next-auth/react';
 import { UserDetail } from '@/model/user';
+import { Title } from '@/stories/Title';
+import { Button } from '@/stories/Button';
 
 type Props = {
   address: string;
@@ -27,21 +27,19 @@ export default function LetterList({ address }: Props) {
   }
 
   return (
-    <div className='w-full h-screen relative'>
-      <Title text='우편함' />
-      <div className=' h-[calc(100vh-116px)] px-6 overflow-scroll scrollbar-hide'>
+    <div className='w-full h-screen relative '>
+      <Title text='우편함' homeLink={true} />
+      <div className=' h-[calc(100vh-82px-80px)] px-6 overflow-scroll scrollbar-hide'>
         {letterList?.length == 0 && <p>받은 편지가 없습니다.</p>}
         {
           letterList?.map((letter) =>
             <LetterItem key={letter.createdAt} letter={letter} />
           )
         }
-
-
       </div>
-      <div className='w-full absolute bottom-0'>
+      <div className='w-full absolute bottom-0 p-3 pb-5'>
         <Link href={`/letter/write/${address}`}>
-          <Button className='rounded-none' color='blue' text='작성하기' />
+          <Button primary={true} label='편지보내기' />
         </Link>
       </div>
     </div>

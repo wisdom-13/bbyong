@@ -1,14 +1,14 @@
 'use client'
 
 import { useForm } from 'react-hook-form';
-import Button from './ui/Button';
 import Input from './ui/Input';
-import Title from './ui/Title';
 import { useState } from 'react';
 import ErrorMsg from './ui/ErrorMsg';
 import { UserDetail } from '@/model/user';
 import useSWR from 'swr'
 import { useRouter } from 'next/navigation';
+import { Title } from '@/stories/Title';
+import { Button } from '@/stories/Button';
 
 type Props = {
   address: string;
@@ -97,7 +97,8 @@ export default function LetterWrite({ address }: Props) {
             <span className='font-semibold pl-2'>비공개</span>
           </label>
           <input type='hidden' value={user.id}  {...register('userId')} />
-          <Button color='blue' text='작성하기' isLoading={isLoading} />
+          <Button label='작성하기' primary={true} />
+          {/* isLoading={isLoading} */}
         </form>
       </div>
 
