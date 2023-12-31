@@ -8,9 +8,6 @@ interface TitleProps {
   rightItem?: ReactElement | '';
 }
 
-/**
- * Primary UI component for user interaction
- */
 export const Title = ({ text, homeLink = false, rightItem }: TitleProps) => {
   return (
     <div className='flex items-center justify-between p-6'>
