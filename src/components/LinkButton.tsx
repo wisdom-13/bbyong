@@ -1,7 +1,8 @@
 'use client';
 
 import { SimpleLink } from '@/model/link';
-import Button from './ui/Button';
+import { Button } from '@/stories/Button';
+// import Button from './ui/Button';
 
 type Props = {
   link: SimpleLink;
@@ -19,7 +20,7 @@ export default function LinkButton({ link }: Props) {
   }
 
   return (
-    <Button key={link.id} className='mb-2' onClick={() => handleLink(link.url)} text={link.title} />
+    <Button label={link.title} className='mb-2 bg-subColor hover:scale-105' onClick={() => handleLink(link.url)} />
   );
 }
 

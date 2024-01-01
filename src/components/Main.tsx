@@ -6,7 +6,6 @@ import React from 'react';
 import useSWR from 'swr';
 import { UserDetail } from '@/model/user';
 import { signIn, signOut } from 'next-auth/react';
-// import Title from './ui/Title';
 import { Button } from '@/stories/Button';
 import { Title } from '@/stories/Title';
 

@@ -1,8 +1,8 @@
 'use client'
 
-import { useState } from "react";
-// import Button from './ui/Button';
+import { MouseEvent, useState } from "react";
 import Image from 'next/image';
+import Effect from './ui/Effect';
 const carrotSound = new Audio('/sound/carrot_pull.mp3');
 
 type Props = {
