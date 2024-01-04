@@ -7,6 +7,9 @@ import SWRConfigContext from '@/context/SWRConfigContext'
 export const metadata: Metadata = {
   title: '두더지집',
   description: '뿅',
+  icons: {
+    icon: '/main_mole.png'
+  }
 }
 
 export default function RootLayout({
