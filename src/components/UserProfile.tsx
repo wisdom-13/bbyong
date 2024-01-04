@@ -43,7 +43,7 @@ export default function UserProfile({ address }: Props) {
           </svg>
         </div>
       </div>
-      <div className='bg-mainColor p-6 mt-[-50px]'>
+      <div className='bg-mainColor p-6 mt-[-51px] h-[calc(100vh-486px)]'>
         <div className='text-white text-xl mt-5 mb-3'>두더지 굴</div>
         <LinkList links={user.links} />
         {
