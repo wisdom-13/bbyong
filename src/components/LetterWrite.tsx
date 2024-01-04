@@ -97,7 +97,7 @@ export default function LetterWrite({ address }: Props) {
             <span className='font-semibold pl-2'>비공개</span>
           </label>
           <input type='hidden' value={user.id}  {...register('userId')} />
-          <Button label='작성하기' primary={true} />
+          <Button label='작성하기' primary={true} isLoading={isLoading} />
           {/* isLoading={isLoading} */}
         </form>
       </div>
