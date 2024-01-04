@@ -15,7 +15,7 @@ export default function Dudge({ userId, dudge = 0 }: Props) {
   const [top, setTop] = useState(0);
   const [left, setLeft] = useState(0);
 
-  const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
+  const handleClick = () => {
     setCount(count + 1);
 
     carrotSound.currentTime = 0;
@@ -25,21 +25,17 @@ export default function Dudge({ userId, dudge = 0 }: Props) {
       method: 'PUT',
       body: JSON.stringify({ id: userId }),
     })
+  }
 
+  const clickEffect = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
     setTop(e.clientY);
     setLeft(e.clientX);
     console.log(top)
   }
 
-  const clickEffect = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
-    // const result = document.getElementById('wrap');
-    // e.offsetX
-    console.log('a')
-  }
-
   return (
     <div>
-      <button className='mt-3 w-full hover:scale-105' onClick={(e) => handleClick(e)}>
+      <button className='mt-3 w-full hover:scale-105' onClick={handleClick}>
         <Image src='/main_mole.png' width={300} height={300} alt='mole' className='w-[300px] m-auto' />
       </button>
       <div className='text-xs bg-white rounded-full text-mainColor py-1 flex items-center w-24 m-auto justify-center relative z-10'>
