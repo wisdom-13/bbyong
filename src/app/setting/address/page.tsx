@@ -1,6 +1,5 @@
 import { authOptions } from '@/app/api/auth/[...nextauth]/route';
 import SettingAddress from '@/components/SettingAddress';
-import Title from '@/components/ui/Title';
 import { getUserByUserEmail } from '@/service/user';
 import { getServerSession } from 'next-auth';
 import { redirect } from 'next/navigation';
