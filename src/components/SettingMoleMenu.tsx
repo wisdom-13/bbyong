@@ -92,7 +92,7 @@ export default function SettingMoleMenu() {
       </div>
 
       <div className='mt-3'>
-        <Button text='저장' onClick={onDownload} />
+        <Button label='저장' onClick={onDownload} />
       </div>
     </div>
   );
