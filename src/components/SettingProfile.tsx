@@ -5,8 +5,8 @@ import useSWR from 'swr';
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from 'react';
 import Input from './ui/Input';
-import ErrorMsg from './ui/ErrorMsg';
 import { Button } from '@/stories/Button';
+import { ErrorMsg } from '@/stories/ErrorMsg';
 
 interface HookFormTypes {
   name: string;

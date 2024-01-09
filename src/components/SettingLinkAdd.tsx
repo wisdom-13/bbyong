@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import { useForm } from 'react-hook-form';
-import ErrorMsg from './ui/ErrorMsg';
+import { ErrorMsg } from '@/stories/ErrorMsg';
 import { KeyedMutator } from 'swr';
 import { UserAll } from '@/model/user';
 import { Button } from '@/stories/Button';

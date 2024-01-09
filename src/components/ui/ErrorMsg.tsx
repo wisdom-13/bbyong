@@ -6,7 +6,7 @@ type Props = {
 export default function ErrorMsg({ msg, className }: Props) {
   return (
     <div>
-      <p className={`text-xs text-red-500 ${className}`}>{msg}</p>
+      <p className={`text-xs text-red-600 ${className}`}>{msg}</p>
     </div>
   );
 }
