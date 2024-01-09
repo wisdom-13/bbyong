@@ -1,7 +1,6 @@
 'use client'
 
 import { useForm } from 'react-hook-form';
-import Input from './ui/Input';
 import { useState } from 'react';
 import { UserDetail } from '@/model/user';
 import useSWR from 'swr'
@@ -9,6 +8,7 @@ import { useRouter } from 'next/navigation';
 import { Title } from '@/stories/Title';
 import { Button } from '@/stories/Button';
 import { ErrorMsg } from '@/stories/ErrorMsg';
+import { Input } from '@/stories/Input';
 
 type Props = {
   address: string;

@@ -4,7 +4,7 @@ import { UserAll } from '@/model/user';
 import useSWR from 'swr';
 import { useForm } from "react-hook-form";
 import { useEffect, useState } from 'react';
-import Input from './ui/Input';
+import { Input } from '@/stories/Input';
 import { Button } from '@/stories/Button';
 import { ErrorMsg } from '@/stories/ErrorMsg';
 
