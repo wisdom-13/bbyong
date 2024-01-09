@@ -1,10 +1,10 @@
 'use client'
 
 import Image from 'next/image';
-import Button from './ui/Button';
 import domtoimage from 'dom-to-image';
 import { saveAs } from 'file-saver';
 import { useRef, useState } from 'react';
+import { Button } from '@/stories/Button';
 
 
 export default function SettingMoleMenu() {

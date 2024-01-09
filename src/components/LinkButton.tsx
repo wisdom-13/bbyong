@@ -2,7 +2,6 @@
 
 import { SimpleLink } from '@/model/link';
 import { Button } from '@/stories/Button';
-// import Button from './ui/Button';
 
 type Props = {
   link: SimpleLink;
