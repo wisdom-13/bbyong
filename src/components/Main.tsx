@@ -28,7 +28,11 @@ export default function Main() {
               <Button type='link' label='로그아웃' onClick={() => signOut()} />
             </>
           ) : (
-            <Button label='시작하기' onClick={() => signIn()} />
+            <>
+              <Image src='/main_mole.png' width={300} height={300} alt='mole' className='w-[300px] m-auto' />
+              <br></br>
+              <Button label='시작하기' onClick={() => signIn()} />
+            </>
           )
         }
       </div>
