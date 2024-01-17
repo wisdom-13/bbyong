@@ -1,12 +1,17 @@
 import { addUser } from "@/service/user";
 import NextAuth, { NextAuthOptions } from "next-auth"
 import KakaoProvider from 'next-auth/providers/kakao'
+import GoogleProvider from "next-auth/providers/google"
 
 export const authOptions: NextAuthOptions = {
   providers: [
     KakaoProvider({
       clientId: process.env.KAKAO_CLIENT_ID!,
       clientSecret: process.env.KAKAO_CLIENT_SECRET!,
+    }),
+    GoogleProvider({
+      clientId: process.env.GOOGLE_OAUTH_ID || '',
+      clientSecret: process.env.GOOGLE_OAUTH_SECRET || '',
     }),
   ],
 
